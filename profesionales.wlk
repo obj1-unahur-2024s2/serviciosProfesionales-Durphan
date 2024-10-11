@@ -27,7 +27,7 @@ class ProfesionalDeLitoral inherits Profesional {
   override method honorarios() = 3000
 }
 
-class ProfesionalesLibres inherits Profesional {
+class ProfesionalLibre inherits Profesional {
   const provinciasHabilitadas
   const honorarios
   

@@ -1,9 +1,40 @@
-import example.pepita
+import universidades.*
+import profesionales.*
+import empresas.*
 
-describe "group of tests for pepita" {
+describe "tests" {
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+  
+  test "Dos profesionales estudiaron en Rosario, uno en Hurlingham, ninguno en San Martin" {
+    assert.equals(
+      2,
+      empresaServicios.cantidadDeProfesionalesQueEstudiaronEn(
+        universidadRosario
+      )
+    )
+    assert.equals(
+      1,
+      empresaServicios.cantidadDeProfesionalesQueEstudiaronEn(
+        universidadHurlingham
+      )
+    )
+    assert.equals(
+      0,
+      empresaServicios.cantidadDeProfesionalesQueEstudiaronEn(
+        universidadSanMartin
+      )
+    )
   }
-
+  
+  test "Rocio es la unica profesional cara" {
+    assert.that(empresaServicios.profesionalesCaros().contains(Rocio))
+  }
+  
+  test "Juana es la profesional mas barata" {
+    assert.equals(Juana, empresaServicios.profesionalMasBarato())
+  }
+  
+  test "Los profesionales estudiaron en rosario, corrientes y hurlingham" {
+    assert.that(empresaServicios.universidades().contains(universidadRosario))
+  }
 }
