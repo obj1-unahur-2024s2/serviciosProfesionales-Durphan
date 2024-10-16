@@ -35,3 +35,26 @@ class ProfesionalLibre inherits Profesional {
   
   override method honorarios() = honorarios
 }
+
+
+class Solicitantes {
+  method puedeSerAtendidoPor(profesional)
+}
+
+class SolicitantesPersona inherits Solicitantes {
+  const property provincia
+
+  override  method puedeSerAtendidoPor(profesional) = profesional.provinciasHabilitadas().contains(provincia)
+}
+
+class SolicitantesInstitucion inherits Solicitantes{
+  const property universidadesReconocidas
+
+ override method puedeSerAtendidoPor(profesional) = universidadesReconocidas.any({universidad => universidad == profesional.universidad()})
+}
+
+class SolicitantesClub inherits Solicitantes {
+const property provinciasPresente
+
+override method puedeSerAtendidoPor(profesional) = provinciasPresente.any({provincia => profesional.universidad() == provincia})
+}
