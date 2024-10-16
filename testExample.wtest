@@ -4,6 +4,47 @@ import empresas.*
 
 describe "tests" {
 
+  const universidadSanMartin = new Universidad(
+  provinciasHabilitadas = ["Buenos Aires"],
+  honorariosRecomendados = 3500
+)
+
+const universidadRosario = new Universidad(
+  provinciasHabilitadas = ["Santa Fe"],
+  honorariosRecomendados = 2800
+)
+
+const universidadCorrientes = new Universidad(
+  provinciasHabilitadas = ["Corrientes"],
+  honorariosRecomendados = 4200
+)
+
+const universidadHurlingham = new Universidad(
+  provinciasHabilitadas = ["Buenos Aires"],
+  honorariosRecomendados = 8800
+)
+
+const Juana = new ProfesionalUniversitario(universidad = universidadRosario)
+
+const Melina = new ProfesionalDeLitoral(universidad = universidadCorrientes)
+
+const Rocio = new ProfesionalLibre(
+  provinciasHabilitadas = ["Santa Fe", "Cordoba", "Buenos Aires"],
+  honorarios = 5000,
+  universidad = universidadHurlingham
+)
+
+const Luciana = new ProfesionalLibre(
+  provinciasHabilitadas = ["Santa Fe", "Entre Rios"],
+  honorarios = 3200,
+  universidad = universidadRosario
+)
+
+const empresaServicios = new EmpresaServicios(
+  honorarioDeReferencia = 4000,
+  profesionalesContratados = [Juana, Melina, Rocio, Luciana]
+)
+
   
   test "Dos profesionales estudiaron en Rosario, uno en Hurlingham, ninguno en San Martin" {
     assert.equals(
@@ -35,6 +76,6 @@ describe "tests" {
   }
   
   test "Los profesionales estudiaron en rosario, corrientes y hurlingham" {
-    assert.that(empresaServicios.universidades().contains(universidadRosario))
+    assert.equals([universidadRosario, universidadCorrientes, universidadHurlingham],empresaServicios.universidades())
   }
 }
